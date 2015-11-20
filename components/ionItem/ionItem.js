@@ -4,14 +4,13 @@ Template.ionItem.helpers({
       return this.id;
     }
   },
+
   itemClasses: function () {
     var classes = ['item'];
 
     if (this.class) {
-      var customClasses = this.class.split(' ');
-      _(customClasses).each(function (customClass) {
-        classes.push(customClass);
-      });
+      let customClasses = this.class.split(' ');
+      customClasses.forEach(class => classes.push(class));
     }
 
     if (this.avatar) {
@@ -81,7 +80,8 @@ Template.ionItem.helpers({
         }
 
       } else {
-        return Router.routes[path].path(Template.parentData(1));
+        return FlowRouter.path(Template.parentData(1));
+        // return Router.routes[path].path(Template.parentData(1));
       }
     }
   }
